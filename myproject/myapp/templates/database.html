@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database</title>
+</head>
+<body>
+    <h1>Database</h1>
+    <a href="/">Back to Home</a>
+    <h1>Database Entries</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Configuration</th>
+            <th>Color</th>
+            <th>Side A Back Panel Type</th>
+            <th>Side B Back Panel Type</th>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Side A Base Depth</th>
+            <th>Side B Base Depth</th>
+            <th>Upper Shelves Quantity</th>
+            <th>Upper Shelf Type</th>
+            <th>Upper Shelf Depth</th>
+            <th>Base Height</th>
+            <th>Wall Mount Qty</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.get_configuration_display }}</td>
+            <td>{{ entry.get_color_display }}</td>
+            <td>{{ entry.get_side_a_back_panel_type_display }}</td>
+            <td>{{ entry.get_side_b_back_panel_type_display }}</td>
+            <td>{{ entry.height }}</td>
+            <td>{{ entry.width }}</td>
+            <td>{{ entry.side_a_base_depth }}</td>
+            <td>{{ entry.side_b_base_depth }}</td>
+            <td>{{ entry.upper_shelves_quantity_per_section }}</td>
+            <td>{{ entry.get_upper_shelf_type_display }}</td>
+            <td>{{ entry.upper_shelf_depth }}</td>
+            <td>{{ entry.base_height }}</td>
+            <td>{{ entry.wall_mount_qty }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
