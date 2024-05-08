@@ -6,12 +6,12 @@
     <title>Gondola Form</title>
 </head>
 <body>
+    <a href="/">Home</a> | <a href="/form/">Form</a> | <a href="/database/">Database | <a href="{% url 'api_feature' %}">API Page</a>
     <h1>Gondola Form</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
-    <a href="/">Back to Home</a>
 </body>
 </html>

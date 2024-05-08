@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from myapp.views import home, form, database, display_database
+from myapp.views import home, form, database, display_database 
+from api.views import feature_view
 
 #URL Patterns Here
 urlpatterns = [
@@ -24,5 +25,5 @@ urlpatterns = [
     path('', home, name='home'),  # Set the home view as the index page
     path('form/', form, name='form'),
     path('database/', display_database, name='database'),  # URL for the database page
-        path('api/', include('api.urls')),
+    path('api/', include('api.urls')),
     ]

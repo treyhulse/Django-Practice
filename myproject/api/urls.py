@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
+from .views import feature_view
 
 urlpatterns = [
-    path('feature/', views.feature_view, name='feature'),
-]
+    path('', feature_view, name='api_feature'),
+    ]
