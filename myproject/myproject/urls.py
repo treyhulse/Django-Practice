@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from myapp.views import home, form, database, display_database
 
 #URL Patterns Here
@@ -24,4 +24,5 @@ urlpatterns = [
     path('', home, name='home'),  # Set the home view as the index page
     path('form/', form, name='form'),
     path('database/', display_database, name='database'),  # URL for the database page
+        path('api/', include('api.urls')),
     ]
