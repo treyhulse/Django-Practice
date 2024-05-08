@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Performance</title>
+</head>
+<body>
+    <a href="/">Home</a> | <a href="/form/">Form</a> | <a href="/database/">Database | <a href="{% url 'api_feature' %}">API Page</a> | <a href="/metrics/">Sales Performance Page</a>
+    <h1>Sales Performance</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity Sold</th>
+                <th>Sale Date</th>
+                <th>Sale Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+            <tr>
+                <td>{{ sale.product.name }}</td>
+                <td>{{ sale.quantity_sold }}</td>
+                <td>{{ sale.sale_date }}</td>
+                <td>${{ sale.sale_price }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No sales data available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

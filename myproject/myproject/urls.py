@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from myapp.views import home, form, database, display_database 
 from api.views import feature_view
+from metrics.views import sales_performance
 
 #URL Patterns Here
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
     path('form/', form, name='form'),
     path('database/', display_database, name='database'),  # URL for the database page
     path('api/', include('api.urls')),
+    path('metrics/', include('metrics.urls')),
     ]
