@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='KCSF',  # Replace with your project's name
+    name='kcsf',  # Replace with your project's name
     version='5.0.4',  # Project version
     packages=find_packages(),  # Automatically find packages in the project
     include_package_data=True,
@@ -31,5 +31,5 @@ setup(
     author='Trey Hulse',  # Your name
     author_email='trey.hulse@kcstorefixtures.com',  # Your email
     keywords='django heroku webapp',  # Keywords for your project
-    url='https://github.com/yourusername/KCSF',  # Link to your project's repository or website
+    url='https://github.com/yourusername/kcsf',  # Link to your project's repository or website
 )
