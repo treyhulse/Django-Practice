@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Performance</title>
-</head>
-<body>
-    <a href="/">Home</a> | <a href="/form/">Form</a> | <a href="/database/">Database | <a href="{% url 'api_feature' %}">API Page</a> | <a href="/metrics/">Sales Performance Page</a>
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
     <h1>Sales Performance</h1>
     <table border="1">
         <thead>
@@ -32,5 +28,4 @@
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Project{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>KCSF</h1>
+        <nav>
+            <a href="/">Home</a> | <a href="/form/">Form</a> | <a href="/database/">Database | <a href="{% url 'api_feature' %}">API Page</a> | <a href="/metrics/">Sales Performance Page</a>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+        <!-- Default content goes here if not overridden -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2024 KCSF Central. All rights reserved.</p>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
