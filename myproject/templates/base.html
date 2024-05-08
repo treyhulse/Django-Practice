@@ -10,12 +10,15 @@
 </head>
 <body>
     <header>
-        <h1>KCSF</h1>
+        <a href="/">
+            <img src="{% static 'images/KC Old Logo (1).png' %}" alt="KCSF Logo">
+        </a>
         <nav>
-            <a href="/">Home</a> | <a href="/form/">Form</a> | <a href="/database/">Database | <a href="{% url 'api_feature' %}">API Page</a> | <a href="/metrics/">Sales Performance Page</a>
+            <ul>
+                <a href="/form/">Form</a> <a href="/database/">Database</a> <a href="{% url 'api_feature' %}">API Page</a> <a href="/metrics/">Sales Performance Page</a>
+            </ul>
         </nav>
     </header>
-    
     <main>
         {% block content %}
         <!-- Default content goes here if not overridden -->
