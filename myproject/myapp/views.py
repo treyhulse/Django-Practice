@@ -17,12 +17,16 @@ def form(request):
         form = GondolaShelvingForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('form')  # Redirect to a new URL if you want
+            return redirect('form')  # Adjust the redirect as necessary
     else:
         form = GondolaShelvingForm()
     return render(request, 'form.html', {'form': form})
 
 def display_database(request):
-    # Fetch all entries from GondolaShelving model
-    entries = GondolaShelving.objects.all()
+    sort_by = request.GET.get('sort', 'date_added')  # Default sorting by date added
+    order = request.GET.get('order', 'desc')
+    if order == 'desc':
+        sort_by = '-' + sort_by
+
+    entries = GondolaShelving.objects.all().order_by(sort_by)
     return render(request, 'database.html', {'entries': entries})

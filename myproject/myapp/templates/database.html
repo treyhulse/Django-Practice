@@ -1,43 +1,68 @@
 {% extends 'base.html' %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Database Entries{% endblock %}
 
 {% block content %}
     <h1>Database Entries</h1>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Configuration</th>
-            <th>Color</th>
-            <th>Side A Back Panel Type</th>
-            <th>Side B Back Panel Type</th>
-            <th>Height</th>
-            <th>Width</th>
-            <th>Side A Base Depth</th>
-            <th>Side B Base Depth</th>
-            <th>Upper Shelves Quantity</th>
-            <th>Upper Shelf Type</th>
-            <th>Upper Shelf Depth</th>
-            <th>Base Height</th>
-            <th>Wall Mount Qty</th>
-        </tr>
-        {% for entry in entries %}
-        <tr>
-            <td>{{ entry.id }}</td>
-            <td>{{ entry.get_configuration_display }}</td>
-            <td>{{ entry.get_color_display }}</td>
-            <td>{{ entry.get_side_a_back_panel_type_display }}</td>
-            <td>{{ entry.get_side_b_back_panel_type_display }}</td>
-            <td>{{ entry.height }}</td>
-            <td>{{ entry.width }}</td>
-            <td>{{ entry.side_a_base_depth }}</td>
-            <td>{{ entry.side_b_base_depth }}</td>
-            <td>{{ entry.upper_shelves_quantity_per_section }}</td>
-            <td>{{ entry.get_upper_shelf_type_display }}</td>
-            <td>{{ entry.upper_shelf_depth }}</td>
-            <td>{{ entry.base_height }}</td>
-            <td>{{ entry.wall_mount_qty }}</td>
-        </tr>
-        {% endfor %}
+    <form method="get" action="">
+        Sort by:
+        <select name="sort">
+            <option value="date_added">Date Added</option>
+            <option value="configuration">Configuration</option>
+            <option value="color">Color</option>
+            <option value="side_a_back_panel_type">Side A Back Panel Type</option>
+            <option value="side_b_back_panel_type">Side B Back Panel Type</option>
+            <option value="height">Height</option>
+            <option value="side_a_base_width">Side A Base Width</option>
+            <option value="side_b_base_width">Side B Base Width</option>
+            <option value="upper_shelf_quantity">Upper Shelf Quantity</option>
+            <option value="upper_shelf_type">Upper Shelf Type</option>
+            <option value="upper_shelf_depth">Upper Shelf Depth</option>
+            <option value="base_height">Base Height</option>
+        </select>
+        Order:
+        <select name="order">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Configuration</th>
+                <th>Color</th>
+                <th>Side A Back Panel Type</th>
+                <th>Side B Back Panel Type</th>
+                <th>Height</th>
+                <th>Side A Base Width</th>
+                <th>Side B Base Width</th>
+                <th>Upper Shelf Quantity</th>
+                <th>Upper Shelf Type</th>
+                <th>Upper Shelf Depth</th>
+                <th>Base Height</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>        
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry.id }}</td>
+                <td>{{ entry.configuration }}</td>
+                <td>{{ entry.color }}</td>
+                <td>{{ entry.side_a_back_panel_type }}</td>
+                <td>{{ entry.side_b_back_panel_type }}</td>
+                <td>{{ entry.height }}</td>
+                <td>{{ entry.side_a_base_width }}</td>
+                <td>{{ entry.side_b_base_width }}</td>
+                <td>{{ entry.upper_shelf_quantity }}</td>
+                <td>{{ entry.upper_shelf_type }}</td>
+                <td>{{ entry.upper_shelf_depth }}</td>
+                <td>{{ entry.base_height }}</td>
+                <td>{{ entry.date_added }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 {% endblock %}

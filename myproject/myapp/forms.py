@@ -5,3 +5,4 @@ class GondolaShelvingForm(forms.ModelForm):
     class Meta:
         model = GondolaShelving
         fields = '__all__'
+
