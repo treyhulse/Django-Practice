@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Login Page</h1>
+    {% if form %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    {% else %}
+        <p>Error: The form is not passed to the template.</p>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

@@ -20,15 +20,21 @@ from django.urls import include, path
 from myapp.views import home, form, database, display_database 
 from api.views import api_view, orders_view, inventory_view
 from metrics.views import sales_performance
+from django.conf import settings
+from django.conf.urls.static import static
 
 #URL Patterns Here
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='/login'), name='logout'),
     path('', home, name='home'),  # Set the home view as the index page
     path('form/', form, name='form'),
     path('database/', display_database, name='database'),  # URL for the database page
     path('api/', include('api.urls')),
     path('metrics/', include('metrics.urls')),
+    path('sales_performance/', sales_performance, name='sales_performance'),
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html', next_page='home'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

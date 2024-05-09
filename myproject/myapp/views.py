@@ -5,13 +5,14 @@ from .forms import GondolaShelvingForm
 from .models import GondolaShelving
 
 # Create your views here.
-@login_required
 def home(request):
     context = {'message': "This is a dynamic message."}
     return render(request, 'index.html', context)
+
 @login_required
 def database(request):
     return render(request, 'database.html')
+
 @login_required
 def form(request):
     if request.method == 'POST':
@@ -22,6 +23,7 @@ def form(request):
     else:
         form = GondolaShelvingForm()
     return render(request, 'form.html', {'form': form})
+
 @login_required
 def display_database(request):
     sort_by = request.GET.get('sort', 'date_added')  # Default sorting by date added

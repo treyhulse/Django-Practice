@@ -4,9 +4,19 @@
 
 {% block content %}
     <h1>Gondola Form</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <h1>Parts List</h1>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ view.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 {% endblock %}

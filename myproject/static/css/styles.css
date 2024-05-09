@@ -10,11 +10,6 @@ header, footer {
     padding: 20px 20px;
 }
 
-header {
-    text-decoration: none;
-    color: #ffffff;
-}
-
 footer {
     margin-top:75px;
 }
@@ -99,14 +94,7 @@ th {
     }
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-
 b {
-
     color: #ffffff;
     margin-right: 25px;
     border: 1px solid #7e0303;
@@ -179,3 +167,47 @@ b:hover {
     display: flex;
     align-items: right;
 }
+
+h1 {
+    color: #000000;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form button {
+    background-color: #7e0303;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: 2.5px solid #7e0303;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #ffffff;
+    color: #7e0303;
+    border: 2.5px solid #ffffff;
+}
+.container-wrapper {
+    display: flex;         /* Enables flexbox */
+    justify-content: center; /* Centers the containers horizontally */
+    align-items: center;   /* Aligns containers vertically */
+    height: 100vh;         /* Set the height of the container wrapper to full viewport height */
+    padding: 20px;         /* Optional: adds some space around the containers */
+}
+
+.container {
+    width: 40%;             /* Adjust the width to allow two containers side by side */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 10px;           /* Adds space between the two containers */
+    box-sizing: border-box;
+}
+

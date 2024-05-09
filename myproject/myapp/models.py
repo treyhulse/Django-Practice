@@ -11,7 +11,7 @@ class Product(models.Model):
 # Gondola Shelving Model
 class GondolaShelving(models.Model):
     CONFIGURATION_CHOICES = [('island', 'Island/Gondola (double-sided)'), ('wall', 'Wall (single-sided)')]
-    COLOR_CHOICES = [('CHR', 'Chrome'), ('PLT', 'Platinum')]
+    COLOR_CHOICES = [('CHR', 'CHR'), ('PLT', 'PLT')]
     PANEL_TYPE_CHOICES = [('pegboard', 'Pegboard'), ('solid', 'Solid')]
     UPPER_SHELF_QUANTITY = [('0', '0'), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6')]
     SHELF_TYPE_CHOICES = [('TL', 'Tilt-in'), ('DL', 'Drop-in')]
