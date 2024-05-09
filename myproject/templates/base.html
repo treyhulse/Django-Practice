@@ -10,14 +10,32 @@
 </head>
 <body>
     <header>
-        <a href="/">
-            <img src="{% static 'images/KC Old Logo (1).png' %}" alt="KCSF Logo">
-        </a>
-        <nav>
-            <ul>
-                <a href="/form/">Form</a> <a href="/database/">Database</a> <a href="{% url 'api_feature' %}">API</a> <a href="/metrics/">Sales Performance Page</a>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <nav class="nav-left">
+                <a href="/" class="logo-link">
+                    <img src="{% static 'images/KC Old Logo (1).png' %}" alt="KCSF Logo" class="logo-image">
+                </a>
+            </nav>
+            <nav class="nav-center">
+                <ul class="nav-list">
+                    <ul class="nav-item"><a href="/form/" class="nav-link">Form</a></ul>
+                    <ul class="nav-item"><a href="/database/" class="nav-link">Database</a></ul>
+                    <ul class="nav-item"><a href="/api/" class="nav-link">API</a></ul>
+                    <ul class="nav-item"><a href="/metrics/" class="nav-link">Sales Performance</a></ul>
+                </ul>
+            </nav>
+            <nav class="nav-right">
+                <div class="auth-section">
+                    {% if user.is_authenticated %}
+                        <span class="user-welcome">Hello, {{ user.username }}!</span>
+                        <a href="{% url 'logout' %}" class="auth-link">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="auth-link">Login</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+        <div class="banner"></div>
     </header>
     <main>
         {% block content %}

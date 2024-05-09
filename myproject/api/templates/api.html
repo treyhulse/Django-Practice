@@ -3,30 +3,11 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-    <h1>Product and Inventory Data</h1>
-    <ul>
-        {% for product in page_obj %}
-        <li>
-            <strong>{{ product.id }}</strong> - ${{ product.price }}
-            <ul>
-                {% for inventory in product.inventory.all %}
-                <li>{{product.description}} SKU: {{ product.name }} - Quantity: {{ inventory.quantity }}</li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% empty %}
-        <li>No products found.</li>
-        {% endfor %}
-    </ul>
-    <div>
-        {% if page_obj.has_previous %}
-            <a href="?page=1">First</a>
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
-        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-        {% endif %}
+    <div style="text-align: center;">
+        <h1>API Dashboard</h1> 
+        <h3>Click To Access</h3>
+        <b href="{% url 'orders' %}">Orders</b>
+        <b href="{% url 'inventory' %}">Inventory</b>    
     </div>
+</body>
 {% endblock %}

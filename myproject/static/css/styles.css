@@ -15,6 +15,10 @@ header {
     color: #ffffff;
 }
 
+footer {
+    margin-top:75px;
+}
+
 nav ul li {
     display: inline;
     margin-right: 10px;
@@ -23,7 +27,7 @@ nav ul li {
 nav a {
     text-decoration: none;
     color: #ffffff;
-    margin-right: 25px;
+    margin-right: 50px;
 }
 
 nav a:hover {
@@ -93,4 +97,85 @@ th {
         overflow-x: auto;
         white-space: nowrap;
     }
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+
+b {
+
+    color: #ffffff;
+    margin-right: 25px;
+    border: 1px solid #7e0303;
+    background-color: #7e0303;
+    border-radius: 3px;
+    padding: 10px 30px; /* Add vertical and horizontal padding */
+}
+
+b:hover {
+    color: #7e0303;
+    border: 2.5px solid #7e0303;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 10px 30px; /* Add vertical and horizontal padding */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo-link img {
+    height: 50px; /* Adjust based on your logo size */
+}
+
+.nav-center .nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgb(255, 255, 255); /* Adjust color as needed */
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: rgb(184, 183, 183);
+}
+
+.auth-section {
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+.user-welcome {
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.auth-link {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 10px;
+    background-color: #7e0303;
+    border-radius: 3px;
+}
+.auth-link:hover {
+    background-color: #ffffff;
+    color: #7e0303;
+}
+
+.nav-right {
+    display: flex;
+    align-items: right;
 }

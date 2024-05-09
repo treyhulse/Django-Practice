@@ -15,14 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import include, path
 from myapp.views import home, form, database, display_database 
-from api.views import feature_view
+from api.views import api_view, orders_view, inventory_view
 from metrics.views import sales_performance
 
 #URL Patterns Here
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/login'), name='logout'),
     path('', home, name='home'),  # Set the home view as the index page
     path('form/', form, name='form'),
     path('database/', display_database, name='database'),  # URL for the database page
