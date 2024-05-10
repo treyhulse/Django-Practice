@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import GondolaShelvingForm
 from .models import GondolaShelving
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -33,3 +35,26 @@ def display_database(request):
 
     entries = GondolaShelving.objects.all().order_by(sort_by)
     return render(request, 'database.html', {'entries': entries})
+
+@login_required
+def display_parts(request):
+    query = request.GET.get('q', '')  # Get the search term from the URL
+    filter_by = request.GET.get('filter', '')  # Get the filter option from the URL
+
+    # Basic QuerySet filtering based on search and additional filtering
+    shelvings = GondolaShelving.objects.all()
+    if query:
+        shelvings = shelvings.filter(
+            Q(configuration__icontains=query) | 
+            Q(color__icontains=query) | 
+            Q(height__icontains=query)
+        )
+    if filter_by:
+        shelvings = shelvings.filter(configuration=filter_by)
+
+    # Paginator setup
+    paginator = Paginator(shelvings, 10)  # Show 10 shelvings per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'parts.html', {'page_obj': page_obj, 'query': query, 'filter_by': filter_by})

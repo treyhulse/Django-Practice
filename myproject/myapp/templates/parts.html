@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Database Entries{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Parts List</h1>
+
+    <!-- Search and Filter Form -->
+    <form method="get">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search...">
+        <select name="filter">
+            <option value="">Select Configuration</option>
+            <option value="island" {% if filter_by == 'island' %}selected{% endif %}>Island/Gondola</option>
+            <option value="wall" {% if filter_by == 'wall' %}selected{% endif %}>Wall</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if page_obj.has_other_pages %}
+        <div>
+            <div>
+                {% if page_obj.has_previous %}
+                    <a href="?page=1&q={{ query }}&filter={{ filter_by }}" class="paginator">Last</a>
+                    <a href="?page={{ page_obj.previous_page_number }}&q={{ query }}&filter={{ filter_by }}" class="paginator">Next</a>
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}&q={{ query }}&filter={{ filter_by }}" class="paginator">Last</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}&q={{ query }}&filter={{ filter_by }}" class="paginator">Next</a>
+
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                
+                {% endif %}
+            </div>
+    {% endif %}
+
+    {% if page_obj %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Configuration</th>
+                    <th>Color</th>
+                    <th>Height</th>
+                    <!-- Add more headers as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for shelving in page_obj %}
+                    <tr>
+                        <td>{{ shelving.configuration }}</td>
+                        <td>{{ shelving.color }}</td>
+                        <td>{{ shelving.height }}</td>
+                        <!-- Add more cells as needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No shelving configurations found.</p>
+    {% endif %}
+</body>
+{% endblock %}

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
-from myapp.views import home, form, database, display_database 
+from myapp.views import home, form, database, display_database, display_parts
 from api.views import api_view, orders_view, inventory_view
 from metrics.views import sales_performance
 from django.conf import settings
@@ -34,6 +34,7 @@ urlpatterns = [
     path('sales_performance/', sales_performance, name='sales_performance'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html', next_page='home'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('parts/', display_parts, name='display-parts'),
     ]
 
 if settings.DEBUG:
